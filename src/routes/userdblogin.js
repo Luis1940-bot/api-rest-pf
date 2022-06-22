@@ -18,7 +18,7 @@ router.use(
   })
 );
 router.use(cookieParser());
-router.set("trust proxy", 1);
+
 router.use(express.json());
 router.use(
   express.urlencoded({
