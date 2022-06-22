@@ -123,7 +123,7 @@ router.post("/userdblogin", userValidShortReg(), validate, async (req, res) => {
         "SessionUserClickCare",
         { userId: userFound.id },
         {
-          domain: "https://deploy-click-care.vercel.app/", //domain, // "https://deploy-click-care.vercel.app/",
+          domain: "*", //domain, // "https://deploy-click-care.vercel.app/",
           expires: new Date(Date.now() + 3 * 60 * 60 * 1000), //3 hours expiration
           httpOnly: false,
           sameSite: false,
