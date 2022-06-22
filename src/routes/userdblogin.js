@@ -12,8 +12,7 @@ const db = require("../db.js");
 const cors = require("cors");
 router.use(
   cors({
-    origin:
-      "https://deploy-click-care-7oidu69yc-juan-prado-rojas-outlookcom.vercel.app/", //process.env.URL_CLIENT
+    origin: "*", //process.env.URL_CLIENT
     credentials: true,
     allowedHeaders: "Content-Type, Authorization",
   })
@@ -26,7 +25,7 @@ router.use(
   })
 );
 
-router.post("/userdblogin", cors(), async (req, res) => {
+router.post("/userdblogin", userValidShortReg(), validate, async (req, res) => {
   try {
     const { email, password } = req.body;
     const userFound = await db.Users.findOne({
