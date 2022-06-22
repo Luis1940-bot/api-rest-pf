@@ -5,6 +5,7 @@ const passport = require("../passport/passport.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
+const sessions = require("express-session");
 
 const { userValidShortReg, validate } = require("../middleware/validator.js");
 //----
@@ -18,7 +19,16 @@ router.use(
   })
 );
 router.use(cookieParser());
+// router.use(
+//   sessions({
+//     secret: "12345",
+//     saveUninitialized: true,
+//     // cookie: { maxAge: oneDay },
+//     resave: false,
+//   })
+// );
 router.use(express.json());
+router.set("trust proxy", 1);
 router.use(
   express.urlencoded({
     extended: true,
