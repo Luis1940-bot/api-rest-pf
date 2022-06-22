@@ -112,12 +112,12 @@ router.post("/userdblogin", userValidShortReg(), validate, async (req, res) => {
       });
 
       // COOKIE BACKEND
-      res.cookie("userBackend", tokenBack, {
-        expires: new Date(Date.now() + 3 * 60 * 60 * 1000), //3 hours expiration
-        httpOnly: true,
-        sameSite: "none",
-        secure: true,
-      });
+      // res.cookie("userBackend", tokenBack, {
+      //   expires: new Date(Date.now() + 3 * 60 * 60 * 1000), //3 hours expiration
+      //   httpOnly: true,
+      //   sameSite: "none",
+      //   secure: true,
+      // });
       // COOKIE FRONTEND
       res.cookie(
         "SessionUserClickCare",
@@ -132,11 +132,11 @@ router.post("/userdblogin", userValidShortReg(), validate, async (req, res) => {
       );
 
       // RESPONSE
-      res.status(200).json({
-        message: "Login success",
-        token: tokenFront,
-        // userInformation: userInfoFront,
-      });
+      // res.status(200).json({
+      //   message: "Login success",
+      //   token: tokenFront,
+      //   // userInformation: userInfoFront,
+      // });
     });
   } catch (e) {
     return res.status(401).json({
