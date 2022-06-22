@@ -125,7 +125,7 @@ router.post("/userdblogin", userValidShortReg(), validate, async (req, res) => {
           domain: "https://deploy-click-care.vercel.app/",
           expires: new Date(Date.now() + 3 * 60 * 60 * 1000), //3 hours expiration
           httpOnly: false,
-          sameSite: "none",
+          sameSite: false,
           secure: true,
         }
       );
