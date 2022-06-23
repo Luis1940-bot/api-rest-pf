@@ -12,11 +12,12 @@ const db = require("../db.js");
 const cors = require("cors");
 router.use(
   cors({
-    origin: true, //process.env.URL_CLIENT,
+    origin: "https://deploy-click-care.vercel.app",
     credentials: true,
     //allowedHeaders: "Content-Type, Authorization",
   })
 );
+router.set("trust proxy", 1);
 router.use(cookieParser());
 
 router.use(express.json());
@@ -114,20 +115,19 @@ router.post("/userdblogin", userValidShortReg(), validate, async (req, res) => {
       // COOKIE BACKEND
       res.cookie("userBackend", tokenBack, {
         expires: new Date(Date.now() + 3 * 60 * 60 * 1000), //3 hours expiration
-        httpOnly: true,
+        httpOnly: false,
         sameSite: "none",
-        //secure: true,
+        secure: true,
       });
       // COOKIE FRONTEND
       res.cookie(
         "SessionUserClickCare",
         { userId: userFound.id },
         {
-          domain: "*", //domain, // "https://deploy-click-care.vercel.app/",
           expires: new Date(Date.now() + 3 * 60 * 60 * 1000), //3 hours expiration
           httpOnly: false,
-          sameSite: false,
-          secure: false,
+          sameSite: "none",
+          secure: true,
         }
       );
 
