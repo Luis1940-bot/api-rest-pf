@@ -17,7 +17,7 @@ router.use(
     //allowedHeaders: "Content-Type, Authorization",
   })
 );
-router.set("trust proxy", 1);
+
 router.use(cookieParser());
 
 router.use(express.json());
