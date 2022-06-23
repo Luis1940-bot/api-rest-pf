@@ -33,6 +33,7 @@ router.post("/addContracts", async (req, res) => {
           },
         }
       );
+      sender(postId, auctionId);
       res.status(200).send("Contract created");
     } else {
       res.status(422).send("Existing Contract ");
@@ -41,6 +42,46 @@ router.post("/addContracts", async (req, res) => {
     res.status(400).send(error);
   }
 });
+
+const sender = async (postId, auctionId) => {
+  try {
+    const sender = await db.Users.findOne({
+      where: {
+        id: (
+          await db.Posts.findOne({
+            where: {
+              id: postId,
+            },
+          })
+        ).userId,
+      },
+    });
+    const receiver = await db.Users.findOne({
+      where: {
+        id: (
+          await db.Auctions.findOne({
+            where: {
+              id: auctionId,
+            },
+          })
+        ).userId,
+      },
+    });
+    const [userCreated, createdo] = await db.Conversations.findOrCreate({
+      where: { senderId: sender.id, receiverId: receiver.id },
+      defaults: {
+        senderId: sender.id,
+        senderName: sender.name,
+        senderImg: "",
+        receiverId: receiver.id,
+        receiverName: receiver.name,
+        receiverImg: "",
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 router.get("/getContracts", async (req, res) => {
   try {
