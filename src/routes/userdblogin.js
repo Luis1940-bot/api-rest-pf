@@ -12,7 +12,7 @@ const db = require("../db.js");
 const cors = require("cors");
 router.use(
   cors({
-    origin: "https://deploy-click-care.vercel.app",
+    origin: true,
     credentials: true,
     //allowedHeaders: "Content-Type, Authorization",
   })
