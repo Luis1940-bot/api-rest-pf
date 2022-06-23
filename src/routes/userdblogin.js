@@ -115,7 +115,7 @@ router.post("/userdblogin", userValidShortReg(), validate, async (req, res) => {
       // COOKIE BACKEND
       res.cookie("userBackend", tokenBack, {
         expires: new Date(Date.now() + 3 * 60 * 60 * 1000), //3 hours expiration
-        httpOnly: false,
+        httpOnly: true,
         sameSite: "none",
         secure: true,
       });
@@ -125,7 +125,7 @@ router.post("/userdblogin", userValidShortReg(), validate, async (req, res) => {
         { userId: userFound.id },
         {
           expires: new Date(Date.now() + 3 * 60 * 60 * 1000), //3 hours expiration
-          httpOnly: false,
+          httpOnly: true,
           sameSite: "none",
           secure: true,
         }
