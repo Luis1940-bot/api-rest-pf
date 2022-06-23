@@ -121,17 +121,14 @@ router.post("/userdblogin", userValidShortReg(), validate, async (req, res) => {
         secure: true,
       });
       // COOKIE FRONTEND
-      res.cookie(
-        "SessionUserClickCare",
-        { userId: userFound.id },
-        {
-          //domain: "*",
-          expires: new Date(Date.now() + 3 * 60 * 60 * 1000), //3 hours expiration
-          httpOnly: false,
-          sameSite: false,
-          secure: true,
-        }
-      );
+      const idToken = userFound.id;
+      res.cookie("SessionUserClickCare", idToken, {
+        //domain: "*",
+        expires: new Date(Date.now() + 3 * 60 * 60 * 1000), //3 hours expiration
+        httpOnly: false,
+        sameSite: false,
+        secure: true,
+      });
 
       // RESPONSE
       res.status(200).json({
