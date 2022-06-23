@@ -27,7 +27,7 @@ function sendEmailToValidate(emailTo, userId, name, surname) {
       html: `<p>Hello ${name} ${surname},
       ClickCare is a platform that allows you to manage your health and your life.</p>
       <p>To validate your account, please click on the link. If you have any questions, please contact us.</p>
-      <p>Thank you for using ClickCare.</p><a href="${process.env.URL_CLIENT}/welcome/${userId}">Click here</a><br>
+      <p>Thank you for using ClickCare.</p><a href="https://deploy-click-care.vercel.app/welcome/${userId}">Click here</a><br>
       `,
     }; //userValidationProcess
 
