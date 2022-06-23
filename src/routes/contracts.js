@@ -9,7 +9,7 @@ router.use(cors());
 
 router.post("/addContracts", async (req, res) => {
   try {
-    const { date, offer, hour, postId, auctionsId } = req.body;
+    const { date, offer, hour, postId, auctionId } = req.body;
     const [contractCreates, created] = await db.Contracts.findOrCreate({
       where: {
         [Op.and]: [{ postId: postId }, { status: "active" }],
@@ -18,7 +18,7 @@ router.post("/addContracts", async (req, res) => {
         date: date,
         price: offer,
         hour: hour,
-        auctionsId: auctionsId,
+        auctionId: auctionId,
         postId: postId,
       },
     });
@@ -29,7 +29,7 @@ router.post("/addContracts", async (req, res) => {
         },
         {
           where: {
-            id: auctionsId,
+            id: auctionId,
           },
         }
       );
