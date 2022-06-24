@@ -90,6 +90,7 @@ router.post("/userdblogin", userValidShortReg(), validate, async (req, res) => {
         lastname: userFound.lastname,
         phone: userFound.phone,
         address: userFound.address,
+        age: userFound.age,
         // countryId: userFound.countryId,
         countryName: userFound["country.name"],
         city: userFound["city.name"],
@@ -101,8 +102,13 @@ router.post("/userdblogin", userValidShortReg(), validate, async (req, res) => {
         professionalPhoto: userFound["professionals.photo"],
         professionalCvu: userFound["professionals.cvu"],
         professionalBalance: userFound["professionals.balance"],
-        professionalCreatedAt: userFound["professionals.createdAt"],
-        professionalUpdatedAt: userFound["professionals.updatedAt"],
+        professionalnivelDeEstudio: userFound["professionals.nivelDeEstudio"],
+        professionalinstitucion: userFound["professionals.institucion"],
+        professionaltitulo: userFound["professionals.titulo"],
+        professionaldate_inicioEstudio:
+          userFound["professionals.date_inicioEstudio"],
+        professionaldate_finicioEstudio:
+          userFound["professionals.date_finicioEstudio"],
       };
       // console.log("userInfoFront", userInfoFront);
       const tokenFront = jwt.sign(userInfoFront, process.env.TOKENKEY, {
