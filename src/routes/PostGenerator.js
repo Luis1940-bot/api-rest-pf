@@ -361,6 +361,22 @@ router.get("/posteosUsersByUserID/:id", async (req, res) => {
             attributes: ["name"],
             //required: true,
           },
+          {
+            model: db.Auctions,
+            attributes: ["date", "offer", "comment", "approved", "cancel"],
+            include: [
+              {
+                model: db.Professionals,
+                attributes: ["id", "trainings", "photo"],
+                // include: [
+                //   {
+                //     model: db.Users,
+                //     attributes: ["name", "surname", "age"],
+                //   },
+                // ],
+              },
+            ],
+          },
         ],
       });
       if (postFound.length > 0) {
