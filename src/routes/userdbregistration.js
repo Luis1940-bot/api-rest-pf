@@ -31,6 +31,7 @@ router.post(
         state,
         city,
         country,
+        photo,
       } = req.body;
 
       const hash = bcrypt.hashSync(password, 10);
@@ -46,6 +47,7 @@ router.post(
           age: age,
           document: document,
           phone2: phone2,
+          photo: photo,
           stateId: state
             ? (
                 await db.States.findOne({ where: { name: state } })
