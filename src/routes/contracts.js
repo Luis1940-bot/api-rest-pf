@@ -132,13 +132,13 @@ router.get("/getContracts", async (req, res) => {
                 },
                 {
                   model: db.Users,
-                  attributes: ["name", "surname", "email", "phone"],
+                  attributes: ["name", "surname", "email", "phone", "photo"],
                 },
               ],
             },
             {
               model: db.Professionals,
-              attributes: ["cvu", "photo"],
+              attributes: ["cvu"],
               include: [
                 {
                   model: db.Users,
@@ -149,6 +149,7 @@ router.get("/getContracts", async (req, res) => {
                     "age",
                     "document",
                     "email",
+                    "photo",
                   ],
                   include: [
                     {
@@ -224,13 +225,13 @@ router.get("/infoDetalleContracts/:id", async (req, res) => {
                   },
                   {
                     model: db.Users,
-                    attributes: ["name", "surname", "email", "phone"],
+                    attributes: ["name", "surname", "email", "phone", "photo"],
                   },
                 ],
               },
               {
                 model: db.Professionals,
-                attributes: ["cvu", "photo"],
+                attributes: ["cvu"],
                 include: [
                   {
                     model: db.Users,
@@ -241,6 +242,7 @@ router.get("/infoDetalleContracts/:id", async (req, res) => {
                       "age",
                       "document",
                       "email",
+                      "photo",
                     ],
                     include: [
                       {

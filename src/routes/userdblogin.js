@@ -91,6 +91,7 @@ router.post("/userdblogin", userValidShortReg(), validate, async (req, res) => {
         phone: userFound.phone,
         address: userFound.address,
         age: userFound.age,
+        photo: userFound.photo,
         // countryId: userFound.countryId,
         countryName: userFound["country.name"],
         city: userFound["city.name"],
