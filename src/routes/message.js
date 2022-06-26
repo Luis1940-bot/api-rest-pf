@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 //const axios = require("axios");
 //const { Message } = require("../db");
+const db = require("../db.js");
 
 const cors = require("cors");
 router.use(
