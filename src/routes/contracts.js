@@ -102,7 +102,15 @@ const sender = async (postId, auctionId) => {
 router.get("/getContracts", async (req, res) => {
   try {
     const contracts = await db.Contracts.findAll({
-      attributes: ["id", "price", "date", "hour", "postId"],
+      attributes: [
+        "id",
+        "price",
+        "date",
+        "hour",
+        "postId",
+        "status",
+        "paidout",
+      ],
       include: [
         {
           model: db.Auctions,
@@ -195,7 +203,15 @@ router.get("/infoDetalleContracts/:id", async (req, res) => {
     if (id && Number.isInteger(parseInt(id))) {
       const contracts = await db.Contracts.findAll({
         where: { id: parseInt(id) },
-        attributes: ["id", "price", "date", "hour", "postId"],
+        attributes: [
+          "id",
+          "price",
+          "date",
+          "hour",
+          "postId",
+          "status",
+          "paidout",
+        ],
         include: [
           {
             model: db.Auctions,
