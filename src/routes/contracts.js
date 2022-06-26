@@ -88,10 +88,10 @@ const sender = async (postId, auctionId) => {
       defaults: {
         senderId: sender.id,
         senderName: sender.name,
-        senderImg: "",
+        senderImg: sender.photo,
         receiverId: receiver.id,
         receiverName: receiver.name,
-        receiverImg: "",
+        receiverImg: receiver.photo,
       },
     });
   } catch (error) {
