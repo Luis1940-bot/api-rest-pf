@@ -7,9 +7,8 @@ const cors = require("cors");
 router.use(
   cors({
     origin: true, //process.env.URL_CLIENT,
-    //credentials: true,
+    credentials: true,
     //allowedHeaders: "Content-Type, Authorization",
-    AccessControlAllowOrigin: "*",
   })
 );
 router.use(express.json());
