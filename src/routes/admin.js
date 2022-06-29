@@ -13,6 +13,7 @@ router.get("/Allposts", async (req, res) => {
     const posts = await db.Posts.findAll({
       attributes: [
         "id",
+        "active",
         "hour_post",
         "date_post",
         "date_ini",
