@@ -442,23 +442,22 @@ router.get("/searchPost", async (req, res) => {
         },
       ],
     });
-    // if (needs || needs != undefined) {
-    if (posts.length > 0) {
-      let postByNeed = await posts.filter((e) =>
-        e.needs.toLowerCase().includes(needs.toString().toLowerCase())
-      );
-      res.status(201).json(postByNeed);
+    if (needs) {
+      if (posts.length > 0) {
+        let postByNeed = await posts.filter((e) =>
+          e.needs.toLowerCase().includes(needs.toString().toLowerCase())
+        );
+        res.status(201).json(postByNeed);
+      } else {
+        res.status(422).json("Not found");
+      }
     } else {
-      res.status(422).json("Not found");
+      if (posts.length > 0) {
+        res.status(201).json(posts);
+      } else {
+        res.status(422).json("Not found");
+      }
     }
-    // } else {
-    //   if (posts.length > 0) {
-    //     res.status(201).json(posts);
-    //   } else {
-    //     res.status(422).json("Not found");
-    //   }
-    // }
-    function traerTodosPost() {}
   } catch (error) {
     res.send(error);
   }
