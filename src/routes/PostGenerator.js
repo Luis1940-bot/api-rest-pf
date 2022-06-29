@@ -397,7 +397,7 @@ router.get("/posteosUsersByUserID/:id", async (req, res) => {
 
 router.get("/searchPost/:needs", async (req, res) => {
   try {
-    const { needs } = req.params;
+    const needs = decodeURI(req.params.needs);
 
     const posts = await db.Posts.findAll({
       where: { active: 1 },
