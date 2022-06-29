@@ -576,7 +576,7 @@ router.put("/userUsuario/:id", async (req, res) => {
 router.get("/AllprofessionalsActive", async (req, res) => {
   try {
     const professional = await db.Professionals.findAll({
-      where: { active: true },
+      // where: { active: true },
       include: [
         {
           attributes: ["name", "surname"],
