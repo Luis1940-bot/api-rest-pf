@@ -395,9 +395,9 @@ router.get("/posteosUsersByUserID/:id", async (req, res) => {
   }
 });
 
-router.get("/searchPost", async (req, res) => {
+router.get("/searchPost/:needs", async (req, res) => {
   try {
-    const { needs } = req.body;
+    const { needs } = req.params;
 
     const posts = await db.Posts.findAll({
       where: { active: 1 },
