@@ -215,7 +215,7 @@ router.get("/infoCardPost", async (req, res) => {
   }
 });
 
-router.delete("/deletePost/:id", async (req, res) => {
+router.delete("/deletePostxxx/:id", async (req, res) => {
   try {
     const { id } = req.params;
 
