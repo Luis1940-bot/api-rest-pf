@@ -577,6 +577,12 @@ router.get("/AllprofessionalsActive", async (req, res) => {
   try {
     const professional = await db.Professionals.findAll({
       where: { active: true },
+      include: [
+        {
+          attributes: ["name", "surname"],
+          model: db.Users,
+        },
+      ],
     });
 
     if (professional.length > 0) {
