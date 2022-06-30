@@ -20,7 +20,7 @@ router.post("/addContracts", async (req, res) => {
 
     const [contractCreates, created] = await db.Contracts.findOrCreate({
       where: {
-        [Op.and]: [{ postId: postId }, { status: "active" }],
+        [Op.and]: [{ postId: postId }, { status: "activo" }],
       },
       defaults: {
         date: date,
