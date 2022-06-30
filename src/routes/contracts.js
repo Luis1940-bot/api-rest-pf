@@ -17,7 +17,7 @@ router.use(
 router.post("/addContracts", async (req, res) => {
   try {
     const { date, offer, hour, postId, auctionId } = req.body;
-    console.log(date, offer, hour, postId, auctionId);
+
     const [contractCreates, created] = await db.Contracts.findOrCreate({
       where: {
         [Op.and]: [{ postId: postId }, { status: "active" }],
